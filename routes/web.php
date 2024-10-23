@@ -95,13 +95,14 @@ Route::group(['middleware' => 'Admin'], function () {
       'uses' => 'ProductController@carrito',
       'as' => 'product.carrito-compra']);
 
-    Route::get('/checkout', [ //aquí está el formulario para concretar la compra
-      'uses' => 'ProductController@checkout',
-      'as' => 'checkout']);
-
+      Route::get('/checkout', [ //aquí está el formulario para concretar la compra
+        'uses' => 'ProductController@checkout',
+        'as' => 'checkout.index']); // Cambia a 'checkout.index'
+    
     Route::post('/checkout', [  // aquí sale el formulario POST con los datos y la dirección de pago
-      'uses' => 'ProductController@postCheckout',
-      'as' => 'checkout']);
+        'uses' => 'ProductController@postCheckout',
+        'as' => 'checkout.store']); // Cambia a 'checkout.store'
+    
 
     Route::get('/eliminar-producto/{id}', [ // Eliminar productos del carrito
       'uses' => 'ProductController@eliminarCarrito',
